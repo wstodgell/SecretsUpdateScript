@@ -1,0 +1,16 @@
+# Virtual environment
+venv/
+.env
+
+# Bytecode files
+__pycache__/
+*.pyc
+*.pyo
+
+# IDE/editor folders
+.vscode/
+.idea/
+
+# OS-specific files
+.DS_Store
+Thumbs.db

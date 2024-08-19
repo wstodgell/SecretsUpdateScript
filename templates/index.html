@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secret Update Form</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script>
+        function saveConfig(section) {
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = '/save_config';
+
+            const sectionInput = document.createElement('input');
+            sectionInput.type = 'hidden';
+            sectionInput.name = 'section';
+            sectionInput.value = section;
+            form.appendChild(sectionInput);
+
+            const fields = document.querySelectorAll(`.${section} input`);
+            fields.forEach(field => {
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = field.name;
+                input.value = field.value;
+                form.appendChild(input);
+            });
+
+            document.body.appendChild(form);
+            form.submit();
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Update Secrets</h1>
+        <form action="/update" method="POST">
+            <fieldset class="aws">
+                <div class="fieldset-header">
+                    <img src="{{ url_for('static', filename='images/AWS.png') }}" alt="AWS Logo">
+                    <legend>AWS Credentials</legend>
+                </div>
+                <div class="form-group">
+                    <label for="aws_access_key_id">AWS Access Key ID:</label>
+                    <input type="text" id="aws_access_key_id" name="aws_access_key_id" value="{{ config['AWS_ACCESS_KEY_ID'] }}" required>
+                </div>
+                <div class="form-group">
+                    <label for="aws_secret_access_key">AWS Secret Access Key:</label>
+                    <input type="text" id="aws_secret_access_key" name="aws_secret_access_key" value="{{ config['AWS_SECRET_ACCESS_KEY'] }}" required>
+                </div>
+                <div class="form-group">
+                    <button type="button" onclick="saveConfig('aws')">Save AWS Config</button>
+                </div>
+            </fieldset>
+            
+            <fieldset class="github">
+                <div class="fieldset-header">
+                    <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Logo">
+                    <legend>GitHub Configuration</legend>
+                </div>
+                <div class="form-group">
+                    <label for="github_repo">GitHub Repository:</label>
+                    <input type="text" id="github_repo" name="github_repo" value="{{ config['GITHUB_REPO'] }}" required>
+                </div>
+                <div class="form-group">
+                    <label for="github_token">GitHub Token:</label>
+                    <input type="text" id="github_token" name="github_token" value="{{ config['GITHUB_TOKEN'] }}" required>
+                </div>
+                <div class="form-group">
+                    <button type="button" onclick="saveConfig('github')">Save GitHub Config</button>
+                </div>
+            </fieldset>
+            
+            <fieldset class="terraform">
+                <div class="fieldset-header">
+                    <img src="{{ url_for('static', filename='images/terraform.png') }}" alt="Terraform Logo">
+                    <legend>Terraform Configuration</legend>
+                </div>
+                <div class="form-group">
+                    <label for="terraform_api_token">Terraform API Token:</label>
+                    <input type="text" id="terraform_api_token" name="terraform_api_token" value="{{ config['TERRAFORM_API_TOKEN'] }}" required>
+                </div>
+                <div class="form-group">
+                    <label for="terraform_workspace_id">Terraform Workspace ID:</label>
+                    <input type="text" id="terraform_workspace_id" name="terraform_workspace_id" value="{{ config['TERRAFORM_WORKSPACE_ID'] }}" required>
+                </div>
+                <div class="form-group">
+                    <button type="button" onclick="saveConfig('terraform')">Save Terraform Config</button>
+                </div>
+            </fieldset>
+            
+            <div class="form-group">
+                <input type="submit" value="Update Secrets">
+            </div>
+        </form>
+    </div>
+</body>
+</html>

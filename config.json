@@ -1,0 +1,6 @@
+{
+    "GITHUB_REPO": "your-username/your-repo",
+    "GITHUB_TOKEN": "your-github-token3",
+    "TERRAFORM_API_TOKEN": "your-terraform-api-token3",
+    "TERRAFORM_WORKSPACE_ID": "your-workspace-id"
+}
