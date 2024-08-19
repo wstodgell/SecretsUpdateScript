@@ -1,20 +1,9 @@
 import requests
-import json
 
-# Load config
-with open('config.json') as config_file:
-    config = json.load(config_file)
-
-TERRAFORM_API_TOKEN = config["TERRAFORM_API_TOKEN"]
-TERRAFORM_WORKSPACE_ID = config["TERRAFORM_WORKSPACE_ID"]
-
-# Function to update a variable in Terraform Cloud
-def update_terraform_variable(var_id, key, value, sensitive=False):
-    print("********terraform_secrets_update.py imported")
-
+def update_terraform_variable(terraform_api_token, terraform_workspace_id, var_id, key, value, sensitive=False):
     url = f"https://app.terraform.io/api/v2/vars/{var_id}"
     headers = {
-        "Authorization": f"Bearer {TERRAFORM_API_TOKEN}",
+        "Authorization": f"Bearer {terraform_api_token}",
         "Content-Type": "application/vnd.api+json"
     }
     payload = {
