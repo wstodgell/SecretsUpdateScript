@@ -25,11 +25,11 @@ def update_secrets():
 
     # Update GitHub secrets
     update_secret(github_repo, github_token, "AWS_ACCESS_KEY_ID", aws_access_key_id)
-    update_secret(github_repo, github_token, "AWS_SECRET_ACCESS_KEY", aws_secret_access_key)
+    # update_secret(github_repo, github_token, "AWS_SECRET_ACCESS_KEY", aws_secret_access_key)
 
     # Update Terraform variables
-    update_terraform_variable(terraform_api_token, terraform_workspace_id, "var-abc123", "AWS_ACCESS_KEY_ID", aws_access_key_id, sensitive=True)
-    update_terraform_variable(terraform_api_token, terraform_workspace_id, "var-def456", "AWS_SECRET_ACCESS_KEY", aws_secret_access_key, sensitive=True)
+    # update_terraform_variable(terraform_api_token, terraform_workspace_id, "var-abc123", "AWS_ACCESS_KEY_ID", aws_access_key_id, sensitive=True)
+    # update_terraform_variable(terraform_api_token, terraform_workspace_id, "var-def456", "AWS_SECRET_ACCESS_KEY", aws_secret_access_key, sensitive=True)
 
     return redirect(url_for('index'))
 

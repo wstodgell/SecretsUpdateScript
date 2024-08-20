@@ -81,6 +81,10 @@ input[type="text"] {
     height: 32px; /* Reduced height */
 }
 
+input[type="file"] {
+    margin-top: 5px;
+}
+
 input[type="submit"] {
     padding: 10px 15px;
     font-size: 1em;
@@ -94,6 +98,15 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
     background-color: #0056b3;
+}
+
+.file-upload-container {
+    display: flex;
+    align-items: center;
+}
+
+.file-upload-label {
+    margin-right: 10px;
 }
 
 .aws {
