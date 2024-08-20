@@ -1,61 +1,110 @@
 function saveConfig(section) {
-    const form = document.createElement('form');
-    form.method = 'POST';
-    form.action = '/save_config';
+  console.log(`Saving configuration for section: ${section}`);
 
-    const sectionInput = document.createElement('input');
-    sectionInput.type = 'hidden';
-    sectionInput.name = 'section';
-    sectionInput.value = section;
-    form.appendChild(sectionInput);
+  const form = document.createElement("form");
+  form.method = "POST";
+  form.action = "/save_config";
 
-    const fields = document.querySelectorAll(`.${section} input`);
-    fields.forEach(field => {
-        const input = document.createElement('input');
-        input.type = 'hidden';
-        input.name = field.name;
-        input.value = field.value;
-        form.appendChild(input);
-    });
+  const sectionInput = document.createElement("input");
+  sectionInput.type = "hidden";
+  sectionInput.name = "section";
+  sectionInput.value = section;
+  form.appendChild(sectionInput);
 
-    document.body.appendChild(form);
-    form.submit();
+  const fields = document.querySelectorAll(`.${section} input`);
+  fields.forEach((field) => {
+    const input = document.createElement("input");
+    input.type = "hidden";
+    input.name = field.name;
+    input.value = field.value;
+    form.appendChild(input);
+    console.log(`Added hidden input: ${field.name} = ${field.value}`);
+  });
+
+  document.body.appendChild(form);
+  form.submit();
 }
 
 function anotherFunction() {
-    alert("Another button clicked!");
-    // Add your additional functionality here
+  console.log("Another button clicked!");
+  alert("Another button clicked!");
+  // Add your additional functionality here
 }
 
 function handleFileUpload(event) {
-    const file = event.target.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            parseFileContent(e.target.result);
-        };
-        reader.readAsText(file);
-    }
+  console.log("Handling file upload");
+  const file = event.target.files[0];
+  if (file) {
+    console.log(`File selected: ${file.name}`);
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      console.log("File loaded");
+      parseFileContent(e.target.result);
+    };
+    reader.readAsText(file);
+  } else {
+    console.log("No file selected");
+  }
 }
 
-
-//Extracts key-value pairs from file content and updates form fields accordingly. 
-//Specifically targets 'aws_access_key_id' and 'aws_secret_access_key'.
 function parseFileContent(content) {
-    const lines = content.split('\n');
-    let awsAccessKeyId = '';
-    let awsSecretAccessKey = '';
+  console.log("Parsing file content");
+  const lines = content.split("\n");
+  let profiles = {};
+  let currentProfile = "";
 
-    lines.forEach(line => {
-        if (line.startsWith('aws_access_key_id')) {
-            awsAccessKeyId = line.split('=')[1].trim();
-        } else if (line.startsWith('aws_secret_access_key')) {
-            awsSecretAccessKey = line.split('=')[1].trim();
-        }
-    });
-
-    if (awsAccessKeyId && awsSecretAccessKey) {
-        document.getElementById('aws_access_key_id').value = awsAccessKeyId;
-        document.getElementById('aws_secret_access_key').value = awsSecretAccessKey;
+  lines.forEach((line) => {
+    line = line.trim();
+    if (line.startsWith("[") && line.endsWith("]")) {
+      currentProfile = line.slice(1, -1).trim();
+      profiles[currentProfile] = {};
+    } else if (currentProfile && line.includes("=")) {
+      const [key, value] = line.split("=").map((part) => part.trim());
+      if (key && value) {
+        profiles[currentProfile][key] = value;
+      }
     }
+  });
+
+  console.log("Profiles found:", profiles);
+  populateProfileDropdown(profiles);
+}
+
+function populateProfileDropdown(profiles) {
+  console.log("Populating profile dropdown");
+  const profileSelect = document.getElementById("profile_select");
+  profileSelect.innerHTML = ""; // Clear existing options
+
+  Object.keys(profiles).forEach((profile) => {
+    const option = document.createElement("option");
+    option.value = profile;
+    option.textContent = profile;
+    profileSelect.appendChild(option);
+  });
+
+  if (Object.keys(profiles).length > 0) {
+    profileSelect.value = Object.keys(profiles)[0]; // Set the first profile as selected
+    updateFields(profiles[profileSelect.value]);
+  } else {
+    console.log("No profiles available");
+  }
+
+  // Add event listener for profile selection change
+  profileSelect.addEventListener("change", function () {
+    const selectedProfile = profileSelect.value;
+    console.log(`Profile selected: ${selectedProfile}`);
+    updateFields(profiles[selectedProfile]);
+  });
+}
+
+function updateFields(profile) {
+  console.log("Updating fields with profile:", profile);
+  if (profile.aws_access_key_id) {
+    document.getElementById("aws_access_key_id").value =
+      profile.aws_access_key_id;
+  }
+  if (profile.aws_secret_access_key) {
+    document.getElementById("aws_secret_access_key").value =
+      profile.aws_secret_access_key;
+  }
 }

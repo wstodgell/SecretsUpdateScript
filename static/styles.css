@@ -6,7 +6,7 @@ body, h1, form {
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #f0f0f0; /* Very light grey background */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,13 +19,13 @@ body {
     background-color: #ffffff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    padding: 10px;
     box-sizing: border-box;
 }
 
 h1 {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 form {
@@ -34,51 +34,89 @@ form {
 }
 
 fieldset {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    padding: 10px;
+    border: 1px solid #ccc; /* Light grey border */
+    border-radius: 6px;
+    margin-bottom: 15px;
+    padding: 8px;
     box-sizing: border-box;
+    background-color: #f9f9f9; /* Very light grey background */
 }
 
 .fieldset-header {
     display: flex;
     align-items: center;
     border-bottom: 1px solid #ddd;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
+    padding-bottom: 8px;
+    margin-bottom: 8px;
 }
 
 .fieldset-header img {
-    max-width: 50px;
-    margin-right: 10px;
+    max-width: 40px;
+    margin-right: 8px;
 }
 
 legend {
-    font-weight: bold;
-    font-size: 1.2em;
+    font-weight: normal; /* Not bold */
+    font-size: 1.1em;
     color: #333;
+    position: relative; /* Needed for tooltip positioning */
+    display: flex;
+    align-items: center;
+}
+
+.tooltip-icon {
+    width: 16px;
+    height: 16px;
+    margin-left: 8px;
+    cursor: pointer;
+}
+
+.tooltip-text {
+    visibility: hidden;
+    width: 200px;
+    background-color: #f0f0f0; /* Light grey background */
+    color: #333; /* Very dark grey text */
+    text-align: left; /* Left-align text */
+    border: 1px solid #000; /* Thin black border */
+    border-radius: 4px;
+    padding: 8px;
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: 0; /* Align to the left */
+    margin-left: 0; /* Remove horizontal margin */
+    font-size: 10pt;
+    line-height: 1.2; /* Improve readability */
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip-icon:hover + .tooltip-text,
+.tooltip-icon:focus + .tooltip-text {
+    visibility: visible;
+    opacity: 1;
 }
 
 .form-group {
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 label {
     display: block;
-    font-size: 0.9em;
-    margin-bottom: 5px;
+    font-size: 0.85em;
+    margin-bottom: 4px;
     color: #666;
 }
 
 input[type="text"] {
     width: 100%;
-    padding: 8px;
-    font-size: 0.9em;
-    border: 1px solid #ddd;
+    padding: 6px;
+    font-size: 0.85em;
+    border: 1px solid #ccc; /* Light grey border */
     border-radius: 4px;
     box-sizing: border-box;
-    height: 32px; /* Reduced height */
+    height: 28px; /* Further reduced height */
+    background-color: #f9f9f9; /* Very light grey background */
 }
 
 input[type="file"] {
@@ -86,8 +124,8 @@ input[type="file"] {
 }
 
 input[type="submit"] {
-    padding: 10px 15px;
-    font-size: 1em;
+    padding: 8px 12px;
+    font-size: 0.9em;
     border: none;
     border-radius: 4px;
     background-color: #007bff;
@@ -106,17 +144,17 @@ input[type="submit"]:hover {
 }
 
 .file-upload-label {
-    margin-right: 10px;
+    margin-right: 8px;
 }
 
 .aws {
-    border-left: 4px solid #ff9900;
+    border-left: 3px solid #ff9900; /* Thinner border */
 }
 
 .github {
-    border-left: 4px solid #333;
+    border-left: 3px solid #333; /* Thinner border */
 }
 
 .terraform {
-    border-left: 4px solid #7e5ab1;
+    border-left: 3px solid #7e5ab1; /* Thinner border */
 }
