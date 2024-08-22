@@ -4,7 +4,7 @@
 
 The Secrets Update Script is a web-based tool built with Flask that facilitates the updating of sensitive secrets for GitHub and Terraform. This application allows you to manage and update AWS credentials, GitHub secrets, and Terraform variables through a user-friendly web interface.
 
-<img src="./App_Architecture.png" alt="App Arch" width="20%">
+<img src="./App_Architecture.png" alt="App Arch" width="50%">
 
 ## Features
 
