@@ -67,6 +67,7 @@ pip install -r requirements.txt
 ## Related Links
 
 [GitHub Personal Access Tokens](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
+
 [Create/Manage Terraform Secrets](https://spacelift.io/blog/terraform-secrets)
 
 
