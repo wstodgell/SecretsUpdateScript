@@ -6,7 +6,7 @@ The Secrets Update Script is a web-based tool built with Flask that facilitates 
 
 ## Features
 
-- **AWS Secrets Management**: Update AWS Access Key ID and Secret Access Key.
+- **AWS Secrets Management**: Update AWS Access_Key_ID and Secret_Access_Key.
 - **GitHub Secrets Update**: Securely update GitHub repository secrets using GitHub's API.
 - **Terraform Variables Management**: Update Terraform environment variables with sensitive data.
 - **Configuration Management**: Save and load configuration settings for GitHub and Terraform.
@@ -14,8 +14,8 @@ The Secrets Update Script is a web-based tool built with Flask that facilitates 
 ## Directory Structure
 
 - **`app.py`**: Main Flask application file.
-- **`config.json`**: Configuration file storing credentials and tokens.
-- **`file_tools.py`**: Utility functions for loading and saving the configuration file.
+- **`config.json`**: Created on first launch, it is the configuration file storing credentials and tokens (GIT/Terraform).
+- **`file_tools.py`**: Utility functions for loading and saving the configuration file (Defaults on first launch of the appliction are here).
 - **`github_secrets_update.py`**: Script for updating GitHub repository secrets.
 - **`terraform_secrets_update.py`**: Script for updating Terraform variables.
 - **`static/`**: Directory containing static files like CSS, JavaScript, and images.
@@ -23,15 +23,15 @@ The Secrets Update Script is a web-based tool built with Flask that facilitates 
 
 ## How It Works
 
-1. **Configuration**: Ensure `config.json` is properly set with your GitHub and Terraform credentials.
-2. **Run the Application**: Execute `app.py` to start the Flask web server.
+1. **Run the Application**: Execute `app.py` to start the Flask web server. 
+2. **Configuration**: On the first launch, ensure correct GitHub/Terraform is credentials are entered and 'save'.
 3. **Update Secrets**:
    - Navigate to the web interface and input the new AWS credentials.
-   - Click the "Update Secrets" button to apply changes.
 4. **Manage Configurations**:
    - Use the provided forms to save configurations for GitHub and Terraform.
    - Changes are saved and reflected in `config.json`.
-
+5. **Update Secrets**
+   - Click the "Update Secrets" button to apply changes.
 ## Dependencies
 
 - Flask
