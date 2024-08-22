@@ -52,7 +52,7 @@ Consider setting up Pythong Virtual Environment First
 
 ```bash
 python -m venv venv
-
+```
 Activate the environment
 
 ```bash
