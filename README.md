@@ -27,6 +27,10 @@ The Secrets Update Script is a web-based tool built with Flask that facilitates 
 
 ## How It Works
 
+<div align="center">
+<img src="./GUI.png" alt="App Arch" width="70%">
+</div>
+
 1. **Run the Application**: Execute `app.py` to start the Flask web server. 
 2. **Configuration**: On the first launch, ensure correct GitHub/Terraform is credentials are entered and 'save'.
 3. **Update Secrets**:
