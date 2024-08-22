@@ -53,21 +53,21 @@ Consider setting up Pythong Virtual Environment First
 ```bash
 python -m venv venv
 ```
-Activate the environment
+Activate the environment:
 
 ```bash
 ./venv/Scripts/activate
-
+```
 Install dependancies in virtual environment
 
 ```bash
 pip install -r requirements.txt
-
+```
 
 ## Related Links
 
 [GitHub Personal Access Tokens](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
-
+[Create/Manage Terraform Secrets](https://spacelift.io/blog/terraform-secrets)
 
 
 
