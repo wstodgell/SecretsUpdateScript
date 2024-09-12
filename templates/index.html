@@ -20,20 +20,27 @@
                 </div>
                 <div class="form-group">
                     <div class="form-group">
-                        <input type="file" id="file_input" onchange="handleFileUpload(event)">
+                        <input type="file" id="file_input" onchange="handleFileUpload(event)"> <!-- handleFileUpload triggered in scripts.js -->
                     </div>
                     <label for="profile_select">Select Profile:</label>
-                    <select id="profile_select" onchange="populateFieldsFromProfile()">
+                    <select id="profile_select" name="profile_select" onchange="populateFieldsFromProfile()">
                         <!-- Options will be populated by JavaScript -->
                     </select>
                 </div>
                 <div class="form-group">
+                    <label for="aws_account_id">AWS Account ID:</label>
+                    <input type="text" id="aws_account_id" name="aws_account_id" value="{{ config['AWS_ACCOUNT_ID'] }}">
+                </div>
+                <div class="form-group">
                     <label for="aws_access_key_id">AWS Access Key ID:</label>
-                    <input type="text" id="aws_access_key_id" name="aws_access_key_id" readonly>
+                    <input type="text" id="aws_access_key_id" name="aws_access_key_id" value="{{ config['AWS_ACCESS_KEY_ID'] }}">
                 </div>
                 <div class="form-group">
                     <label for="aws_secret_access_key">AWS Secret Access Key:</label>
-                    <input type="text" id="aws_secret_access_key" name="aws_secret_access_key" readonly>
+                    <input type="text" id="aws_secret_access_key" name="aws_secret_access_key" value="{{ config['AWS_SECRET_ACCESS_KEY'] }}">
+                </div>
+                <div class="form-group">
+                    <button type="button" onclick="saveConfig('aws')">Save AWS Config</button>
                 </div>
             </fieldset>
             
