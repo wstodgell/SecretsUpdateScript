@@ -8,7 +8,8 @@ DEFAULT_CONFIG = {
     "TERRAFORM_API_TOKEN": "your-terraform-api-token3",
     "TERRAFORM_WORKSPACE_ID": "your-workspace-id",
     "AWS_ACCESS_KEY_ID": "",
-    "AWS_SECRET_ACCESS_KEY": ""
+    "AWS_SECRET_ACCESS_KEY": "",
+    "AWS_ACCOUNT_ID": ""
 }
 
 # Path to your configuration file

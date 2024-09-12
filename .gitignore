@@ -1,5 +1,5 @@
 # Virtual environment
-venv/
+myenv/
 .env
 
 # Bytecode files
@@ -17,3 +17,9 @@ Thumbs.db
 
 # local sensitive configs
 config.json
+
+# Terraform State Files will be stored in Terraform Cloud
+*.tfstate
+*.tfstate.backup
+.terraform/
+
